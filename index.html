@@ -152,6 +152,8 @@
             <input
               class="new-message-inputs"
               placeholder="Scrivi un messaggio"
+              v-model="contact.newMessage"
+              @keyup.enter="sendMessage(contact)"
             />
             <div class="right-footer-icon">
               <i class="fa fa-microphone" aria-hidden="true"></i>

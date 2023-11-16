@@ -176,5 +176,19 @@ createApp({
       });
       this.contacts[index].visible = true;
     },
+
+    sendMessage(contact) {
+      const newMessage = contact.newMessage;
+      const currentDate = new Date().toLocaleString();
+      if (newMessage.trim() !== "") {
+        contact.messages.push({
+          date: currentDate,
+          message: newMessage,
+          status: "sent",
+        });
+      }
+
+      contact.newMessage = "";
+    },
   },
 }).mount("#app");
