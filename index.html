@@ -80,12 +80,12 @@
                 
               />
             </div>
-            <div class="contact-info" >
+            <div class="contact-info">
               <h3>
                 <span class="contact-name">{{ contact.name }}</span>
-                <span class="time">16:15</span>
+                <span class="time">{{ contact.messages[contact.messages.length -1].date}}</span>
               </h3>
-              <small>Lorem ipsum dolor sit amet</small>
+              <small>{{ contact.messages[contact.messages.length -1].message}}</small>
             </div>
           </div>
           <!-- /single contact in thumbs -->
