@@ -92,10 +92,13 @@
         </div>
       </div>
       <!-- /contenitore sx -->
+
+
+
       <!-- contenitore dx -->
       <div class="right">
-        <div v-for="(contact, index) in contacts" :key="index">
-          <div class="header-right" v-if="contact.visible">
+        <div v-for="(contact, index) in contacts" :key="index" v-show="contact.visible">
+          <div class="header-right">
             <div class="header-right-logo">
               <img
                 :src="`assets/img/avatar${contact.avatar}.jpg`"
@@ -113,7 +116,7 @@
               <i class="fas fa-ellipsis-v"></i>
             </div>
           </div>
-          <div class="right-messages-container" v-if="contact.visible">
+          <div class="right-messages-container">
             <div class="right-messages">
               <div v-for="(message, index) in contact.messages" :key="index" class="d-flex">
                 <div v-if="message.status === 'sent'" class="message sent">
@@ -150,7 +153,7 @@
           
 
 
-          <div class="right-footer" v-if="contact.visible">
+          <div class="right-footer">
             <div class="right-footer-icon">
               <i class="far fa-smile"></i>
             </div>
