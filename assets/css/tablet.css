@@ -40,3 +40,9 @@
 .right .right-messages {
     padding: 5%;
 }
+
+.right .right-messages-container {
+    width: 100%;
+    height: calc(100vh - 70px - 70px);
+  }
+  

@@ -241,7 +241,7 @@ body {
 
 .right .right-messages-container {
   width: 100%;
-  height: calc(100% - 70px - 70px);
+  height: calc(95vh - 70px - 70px);
 }
 
 .right .right-messages {
