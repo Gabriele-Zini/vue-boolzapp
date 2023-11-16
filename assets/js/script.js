@@ -189,6 +189,17 @@ createApp({
       }
 
       contact.newMessage = "";
+
+      setTimeout(() => {
+        const botMessage = "ok";
+        const botDate = new Date().toLocaleString();
+  
+        contact.messages.push({
+          date: botDate,
+          message: botMessage,
+          status: 'received',
+        });
+      }, 3000);
     },
   },
 }).mount("#app");
