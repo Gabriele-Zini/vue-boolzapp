@@ -59,6 +59,9 @@
             class="left-searchbar-input"
             placeholder="Cerca o inizia una nuova chat"
             name="search"
+            v-model="searchText"
+            @input="searchName"
+            @keyup.enter="searchName"
           />
         </div>
         <div class="contacts">
@@ -68,14 +71,16 @@
             v-for="(contact, index) in contacts"
             :key="index"
             @click="contactClicked(index)"
-          >
-            <div class="contact-logo">
+            v-show="contact.leftVisible"
+          >  
+            <div class="contact-logo"  >
               <img
                 :src="`assets/img/avatar${contact.avatar}.jpg`"
                 alt="Avatar {{ contact.name }}"
+                
               />
             </div>
-            <div class="contact-info">
+            <div class="contact-info" >
               <h3>
                 <span class="contact-name">{{ contact.name }}</span>
                 <span class="time">16:15</span>

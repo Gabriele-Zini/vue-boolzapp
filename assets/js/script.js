@@ -3,12 +3,14 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      visible: false,
+      searchText: "",
+      leftVisible: true,
       contacts: [
         {
           name: "Michele",
           avatar: "_1",
           visible: true,
+          leftVisible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -31,6 +33,7 @@ createApp({
           name: "Fabio",
           avatar: "_2",
           visible: false,
+          leftVisible: true,
           messages: [
             {
               date: "20/03/2020 16:30:00",
@@ -53,6 +56,7 @@ createApp({
           name: "Samuele",
           avatar: "_3",
           visible: false,
+          leftVisible: true,
           messages: [
             {
               date: "28/03/2020 10:10:40",
@@ -75,6 +79,7 @@ createApp({
           name: "Alessandro B.",
           avatar: "_4",
           visible: false,
+          leftVisible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -92,6 +97,7 @@ createApp({
           name: "Alessandro L.",
           avatar: "_5",
           visible: false,
+          leftVisible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -109,6 +115,7 @@ createApp({
           name: "Claudia",
           avatar: "_6",
           visible: false,
+          leftVisible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -131,6 +138,7 @@ createApp({
           name: "Federico",
           avatar: "_7",
           visible: false,
+          leftVisible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -148,6 +156,7 @@ createApp({
           name: "Davide",
           avatar: "_8",
           visible: false,
+          leftVisible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -203,6 +212,16 @@ createApp({
     },
     deleteMessage(contact, index) {
       contact.messages.splice(index, 1);
+    },
+    searchName() {
+      let search = this.searchText.toLowerCase();
+      this.contacts.forEach((contact) => {
+        if (contact.name.toLowerCase().includes(search)) {
+          contact.leftVisible = true;
+        } else {
+          contact.leftVisible = false;
+        }
+      });
     },
   },
 }).mount("#app");
