@@ -44,6 +44,11 @@ body {
   width: calc(100% - 380px);
 }
 
+.d-flex {
+  display: flex;
+  flex-direction: column;
+}
+
 /* HEADER */
 .header-left,
 .header-right {
@@ -275,6 +280,10 @@ body {
   background: #D5F9BA;
 }
 
+.sent {
+  align-self: flex-end;
+}
+
 .right .right-messages .message .message-inner {
   display: flex;
   justify-content: space-between;
@@ -283,7 +292,7 @@ body {
 .right .right-messages .message .message-options {
   cursor: pointer;
   position: relative;
-  height: 95px;
+  min-height: 30px;
 }
 
 .right .right-messages .message .message-options .fa-chevron-down {

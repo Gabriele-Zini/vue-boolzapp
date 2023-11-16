@@ -8,7 +8,7 @@ createApp({
         {
           name: "Michele",
           avatar: "_1",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
