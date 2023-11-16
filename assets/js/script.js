@@ -193,13 +193,16 @@ createApp({
       setTimeout(() => {
         const botMessage = "ok";
         const botDate = new Date().toLocaleString();
-  
+
         contact.messages.push({
           date: botDate,
           message: botMessage,
-          status: 'received',
+          status: "received",
         });
       }, 3000);
+    },
+    deleteMessage(contact, index) {
+      contact.messages.splice(index, 1);
     },
   },
 }).mount("#app");
