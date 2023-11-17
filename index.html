@@ -68,6 +68,7 @@
           <!-- single contact in thumbs -->
           <div
             class="contact"
+            :class="activeIndex===index? 'active': ''"
             v-for="(contact, index) in contacts"
             :key="index"
             @click="contactClicked(index)"
