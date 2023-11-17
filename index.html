@@ -118,7 +118,7 @@
           </div>
           <div class="right-messages-container">
             <div class="right-messages">
-              <div v-for="(message, index) in contact.messages" :key="index" class="d-flex">
+              <div v-for="(message, index) in contact.messages" :key="message.message" class="d-flex">
                 <div v-if="message.status === 'sent'" class="message sent">
                   <!-- sent message -->
                   <div class="message-inner">
