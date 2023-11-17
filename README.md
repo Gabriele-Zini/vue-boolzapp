@@ -77,6 +77,8 @@ Boolzapp is a simple chat application built using Vue.js, HTML, and CSS. The app
 - **sendMessage(contact)**: Sends a message and simulates a delayed response from a bot.
 - **deleteMessage(contact, index)**: Deletes a message from the conversation.
 - **searchName()**: Filters contacts based on the search input.
+-  **dateFormatting(date)**:  Is responsible for formatting dates in the application. It takes a date string as input and uses Luxon, a JavaScript library for working with dates and times, to convert and format the date. 
+
 
 ```javascript
 contactClicked: function (index) {
@@ -123,6 +125,10 @@ contactClicked: function (index) {
         }
       });
     }
+       dateFormatting(date) {
+      const luxonDate = luxon.DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss").toLocaleString({ hour: 'numeric', minute: 'numeric' });
+      return luxonDate
+    },
 ```
 
 ### Project Structure
