@@ -29,7 +29,7 @@
   </head>
   <body>
     <div id="app" class="container">
-      <!-- contenitore sx -->
+      <!-- left container -->
       <div class="left">
         <div class="header-left">
           <div class="header-left-logo">
@@ -91,11 +91,11 @@
           <!-- /single contact in thumbs -->
         </div>
       </div>
-      <!-- /contenitore sx -->
+      <!-- /left container -->
 
 
 
-      <!-- contenitore dx -->
+      <!--right container-->
       <div class="right">
         <div v-for="(contact, index) in contacts" :key="index" v-show="contact.visible">
           <div class="header-right">
@@ -120,7 +120,7 @@
             <div class="right-messages">
               <div v-for="(message, index) in contact.messages" :key="index" class="d-flex">
                 <div v-if="message.status === 'sent'" class="message sent">
-                  <!-- Messaggio inviato -->
+                  <!-- sent message -->
                   <div class="message-inner">
                     <span class="message-text">{{ message.message }}</span>
                     <div class="message-options">
@@ -135,7 +135,7 @@
                 </div>
           
                 <div v-if="message.status === 'received'" class="message received">
-                  <!-- Messaggio ricevuto -->
+                  <!-- received message -->
                   <div class="message-inner">
                     <span class="message-text">{{ message.message }}</span>
                     <div class="message-options">
