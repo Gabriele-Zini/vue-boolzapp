@@ -37,6 +37,20 @@ Boolzapp is a simple chat application built using Vue.js, HTML, and CSS. The app
 
 
 ```html
+         <input
+            id="contacts-filter"
+            class="left-searchbar-input"
+            placeholder="Cerca o inizia una nuova chat"
+            name="search"
+            v-model="searchText"
+            @input="searchName"
+            @keyup.enter="searchName"
+          />
+
+
+<!--...-->
+
+
 <div
             class="contact"
             v-for="(contact, index) in contacts"
@@ -45,11 +59,11 @@ Boolzapp is a simple chat application built using Vue.js, HTML, and CSS. The app
             v-show="contact.leftVisible"
           ></div>
 
-//...
+<!--...-->
 
 <div v-for="(contact, index) in contacts" :key="index" v-show="contact.visible"></div>
 
-//...
+<!--...-->
 
 <div v-for="(message, index) in contact.messages" :key="index" class="d-flex"></div>
 <div v-if="message.status === 'sent'" class="message sent"></div>
