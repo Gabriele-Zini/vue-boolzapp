@@ -97,7 +97,7 @@
 
       <!--right container-->
       <div class="right">
-        <div v-for="(contact, index) in contacts" :key="index" v-show="contact.visible">
+        <div v-for="(contact, index) in contacts" :key="contact.name" v-show="contact.visible">
           <div class="header-right">
             <div class="header-right-logo">
               <img
