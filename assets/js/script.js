@@ -5,6 +5,7 @@ createApp({
     return {
       searchText: "",
       leftVisible: true,
+      activeIndex: 0,
       contacts: [
         {
           name: "Michele",
@@ -184,6 +185,7 @@ createApp({
         contact.visible = false;
       });
       this.contacts[index].visible = true;
+      this.activeIndex = index;
     },
 
     sendMessage(contact) {
