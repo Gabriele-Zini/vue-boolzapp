@@ -1,4 +1,7 @@
 const { createApp } = Vue;
+const dt = luxon.DateTime.now();
+const formattedTime = dt.toFormat("HH:mm");
+console.log(dt)
 
 createApp({
   data() {
@@ -190,7 +193,7 @@ createApp({
 
     sendMessage(contact) {
       const newMessage = contact.newMessage;
-      const currentDate = new Date().toLocaleString();
+      const currentDate = formattedTime;
       if (newMessage.trim() !== "") {
         contact.messages.push({
           date: currentDate,
@@ -203,7 +206,7 @@ createApp({
 
       setTimeout(() => {
         const botMessage = "ok";
-        const botDate = new Date().toLocaleString();
+        const botDate = formattedTime;
 
         contact.messages.push({
           date: botDate,
@@ -225,5 +228,12 @@ createApp({
         }
       });
     },
+
+    dateFormatting(date) {
+      const luxonDate = luxon.DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss").toLocaleString({ hour: 'numeric', minute: 'numeric' });
+      return luxonDate
+    },
   },
 }).mount("#app");
+
+

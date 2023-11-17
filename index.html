@@ -23,6 +23,9 @@
       media="screen and (max-width: 540px)"
     />
 
+    <!-- CDN di Luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+
     <!-- vue cdn -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Boolzapp</title>
@@ -84,7 +87,7 @@
             <div class="contact-info">
               <h3>
                 <span class="contact-name">{{ contact.name }}</span>
-                <span class="time">{{ contact.messages[contact.messages.length -1].date}}</span>
+                <span class="time">{{ dateFormatting(contact.messages[contact.messages.length -1].date)}}</span>
               </h3>
               <small>{{ contact.messages[contact.messages.length -1].message}}</small>
             </div>
@@ -108,7 +111,7 @@
               <h3>
                 <span id="header-right-contact-name"> {{ contact.name }}</span>
                 <br />
-                <small class="time">ultimo accesso {{ contact.messages[contact.messages.length -1].date}}</small>
+                <small class="time">ultimo accesso alle {{ dateFormatting(contact.messages[contact.messages.length -1].date)}}</small>
               </h3>
             </div>
             <div class="header-right-icons">
@@ -132,7 +135,7 @@
                       </div>
                     </div>
                   </div>
-                  <span class="message-time">{{ message.date }}</span>
+                  <span class="message-time">{{ dateFormatting( message.date) }}</span>
                 </div>
           
                 <div v-if="message.status === 'received'" class="message received">
@@ -147,7 +150,7 @@
                       </div>
                     </div>
                   </div>
-                  <span class="message-time">{{ message.date }}</span>
+                  <span class="message-time">{{ dateFormatting( message.date) }}</span>
                 </div>
               </div>
             </div>
@@ -173,7 +176,6 @@
 
       <!-- /right container -->
     </div>
-    <script src="assets/js/data.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
