@@ -125,19 +125,17 @@ contactClicked: function (index) {
         }
       });
     }
-      dateFormatting(date) {
+       dateFormatting(date) {
       let luxonDate;
 
       if (luxon.DateTime.fromFormat(date, "HH:mm").isValid) {
-        luxonDate = luxon.DateTime.fromFormat(date, "HH:mm", { zone: "utc" });
+        luxonDate = luxon.DateTime.fromFormat(date, "HH:mm");
       } else {
-        luxonDate = luxon.DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss", {
-          zone: "utc",
-        });
+        luxonDate = luxon.DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss");
       }
 
       return luxonDate.toLocaleString({ hour: "numeric", minute: "numeric" });
-    },
+    }
 ```
 
 ### Project Structure
