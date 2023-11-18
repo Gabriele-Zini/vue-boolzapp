@@ -10,6 +10,20 @@ createApp({
       leftVisible: true,
       activeIndex: 0,
       typing: false,
+      phrases: [
+        "nel mezzo del cammin di nostra vita",
+        "ok, ma non lo so",
+        "la pasta al ragù",
+        "ei fu, siccome immobile",
+        "caro nome che il mio cor, festi primo palpitar",
+        "ciao",
+        "su di noi, nemmeno una nuvola",
+        "perché",
+        "fatti non foste a viver come bruti",
+        "hai fatto bene",
+        "non me la sento",
+        "che fai?",
+      ],
 
       contacts: [
         {
@@ -215,7 +229,7 @@ createApp({
       contact.newMessage = "";
 
       setTimeout(() => {
-        const botMessage = "ok";
+        const botMessage = this.getRandomPhrase();
         const botDate = formattedTime;
         if (newMessage.trim() !== "") {
           contact.messages.push({
@@ -270,6 +284,15 @@ createApp({
     },
     notTyping() {
       this.typing = false;
+    },
+    notTypingWithDelay() {
+      setTimeout(() => {
+        this.notTyping();
+      }, 150);
+    },
+    getRandomPhrase() {
+      const randomIndex = Math.floor(Math.random() * this.phrases.length);
+      return this.phrases[randomIndex];
     },
   },
 }).mount("#app");
