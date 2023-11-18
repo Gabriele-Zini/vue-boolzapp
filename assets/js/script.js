@@ -9,6 +9,7 @@ createApp({
       searchText: "",
       leftVisible: true,
       activeIndex: 0,
+      typing: false,
 
       contacts: [
         {
@@ -262,6 +263,13 @@ createApp({
     },
     saveRandomTime(index) {
       this.contacts[index].randomTime = this.generateRandomTime();
+    },
+
+    typingFunction() {
+      this.typing = true;
+    },
+    notTyping() {
+      this.typing = false;
     },
   },
 }).mount("#app");

@@ -165,10 +165,13 @@
               class="new-message-inputs"
               placeholder="Scrivi un messaggio"
               v-model="contact.newMessage"
-              @keyup.enter="sendMessage(contact)"
+              @input="typingFunction"
+              @blur="notTyping"
+              @keyup.enter="sendMessage(contact); notTyping()"
             />
             <div class="right-footer-icon">
-              <i class="fa fa-microphone" aria-hidden="true"></i>
+              <i v-if="!typing" class="fa fa-microphone" aria-hidden="true"></i>
+              <i v-else class="fa fa-paper-plane" aria-hidden="true"></i>
             </div>
           </div>
         </div>
