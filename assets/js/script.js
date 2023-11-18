@@ -271,9 +271,11 @@ createApp({
       }, 2500);
 
       setTimeout(() => {
-        contact.online = false;
-        contact.newOnlineStatus = true;
-        contact.newOnlineTime = this.getCurrentTimeLuxon();
+        if (newMessage.trim() !== "") {
+          contact.online = false;
+          contact.newOnlineStatus = true;
+          contact.newOnlineTime = this.getCurrentTimeLuxon();
+        }
       }, 3500);
     },
     deleteMessage(contact, index) {
