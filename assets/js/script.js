@@ -32,6 +32,8 @@ createApp({
           visible: true,
           leftVisible: true,
           randomTime: this.generateRandomTime(),
+          online: false,
+          newOnlineStatus: false,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -56,6 +58,9 @@ createApp({
           visible: false,
           leftVisible: true,
           randomTime: this.generateRandomTime(),
+          online: false,
+          newOnlineStatus: false,
+          newOnlineTime: this.getCurrentTimeLuxon(),
           messages: [
             {
               date: "20/03/2020 16:30:00",
@@ -80,6 +85,9 @@ createApp({
           visible: false,
           leftVisible: true,
           randomTime: this.generateRandomTime(),
+          online: false,
+          newOnlineStatus: false,
+          newOnlineTime: this.getCurrentTimeLuxon(),
           messages: [
             {
               date: "28/03/2020 10:10:40",
@@ -104,6 +112,9 @@ createApp({
           visible: false,
           leftVisible: true,
           randomTime: this.generateRandomTime(),
+          online: false,
+          newOnlineStatus: false,
+          newOnlineTime: this.getCurrentTimeLuxon(),
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -123,6 +134,9 @@ createApp({
           visible: false,
           leftVisible: true,
           randomTime: this.generateRandomTime(),
+          online: false,
+          newOnlineStatus: false,
+          newOnlineTime: this.getCurrentTimeLuxon(),
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -142,6 +156,9 @@ createApp({
           avatar: "_6",
           visible: false,
           leftVisible: true,
+          online: false,
+          newOnlineStatus: false,
+          newOnlineTime: this.getCurrentTimeLuxon(),
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -166,6 +183,9 @@ createApp({
           avatar: "_7",
           visible: false,
           leftVisible: true,
+          online: false,
+          newOnlineStatus: false,
+          newOnlineTime: this.getCurrentTimeLuxon(),
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -185,6 +205,9 @@ createApp({
           avatar: "_8",
           visible: false,
           leftVisible: true,
+          online: false,
+          newOnlineStatus: false,
+          newOnlineTime: this.getCurrentTimeLuxon(),
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -217,8 +240,10 @@ createApp({
 
     sendMessage(contact) {
       const newMessage = contact.newMessage;
-      const currentDate = formattedTime;
+      const currentDate = this.getCurrentTimeLuxon();
       if (newMessage.trim() !== "") {
+        contact.online = true;
+        contact.newOnlineStatus = false;
         contact.messages.push({
           date: currentDate,
           message: newMessage,
@@ -230,7 +255,7 @@ createApp({
 
       setTimeout(() => {
         const botMessage = this.getRandomPhrase();
-        const botDate = formattedTime;
+        const botDate =  this.getCurrentTimeLuxon();
         if (newMessage.trim() !== "") {
           contact.messages.push({
             date: botDate,
@@ -239,6 +264,12 @@ createApp({
           });
         }
       }, 1000);
+
+      setTimeout(() => {
+        contact.online = false;
+        contact.newOnlineStatus = true;
+        contact.newOnlineTime = this.getCurrentTimeLuxon();
+      }, 2500);
     },
     deleteMessage(contact, index) {
       contact.messages.splice(index, 1);
@@ -293,6 +324,10 @@ createApp({
     getRandomPhrase() {
       const randomIndex = Math.floor(Math.random() * this.phrases.length);
       return this.phrases[randomIndex];
+    },
+
+    getCurrentTimeLuxon() {
+      return luxon.DateTime.now().toFormat("HH:mm");
     },
   },
 }).mount("#app");
