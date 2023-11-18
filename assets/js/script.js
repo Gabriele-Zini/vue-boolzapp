@@ -242,7 +242,6 @@ createApp({
       const newMessage = contact.newMessage;
       const currentDate = this.getCurrentTimeLuxon();
       if (newMessage.trim() !== "") {
-        contact.newOnlineStatus = false;
         contact.messages.push({
           date: currentDate,
           message: newMessage,
@@ -254,6 +253,7 @@ createApp({
 
       setTimeout(() => {
         contact.online = true;
+        contact.newOnlineStatus = false;
       }, 1000);
 
       setTimeout(() => {
