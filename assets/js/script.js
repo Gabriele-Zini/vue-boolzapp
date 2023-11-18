@@ -242,7 +242,6 @@ createApp({
       const newMessage = contact.newMessage;
       const currentDate = this.getCurrentTimeLuxon();
       if (newMessage.trim() !== "") {
-        contact.online = true;
         contact.newOnlineStatus = false;
         contact.messages.push({
           date: currentDate,
@@ -254,8 +253,12 @@ createApp({
       contact.newMessage = "";
 
       setTimeout(() => {
+        contact.online = true;
+      }, 1000);
+
+      setTimeout(() => {
         const botMessage = this.getRandomPhrase();
-        const botDate =  this.getCurrentTimeLuxon();
+        const botDate = this.getCurrentTimeLuxon();
         if (newMessage.trim() !== "") {
           contact.messages.push({
             date: botDate,
@@ -263,13 +266,13 @@ createApp({
             status: "received",
           });
         }
-      }, 1000);
+      }, 2500);
 
       setTimeout(() => {
         contact.online = false;
         contact.newOnlineStatus = true;
         contact.newOnlineTime = this.getCurrentTimeLuxon();
-      }, 2500);
+      }, 3500);
     },
     deleteMessage(contact, index) {
       contact.messages.splice(index, 1);
