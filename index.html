@@ -87,9 +87,9 @@
             <div class="contact-info">
               <h3>
                 <span class="contact-name">{{ contact.name }}</span>
-                <span class="time">{{ dateFormatting(contact.messages[contact.messages.length -1].date)}}</span>
+                <span class="time" v-if="contact.messages.length > 0">{{ dateFormatting(contact.messages[contact.messages.length -1].date)}}</span>
               </h3>
-              <small>{{ contact.messages[contact.messages.length -1].message}}</small>
+              <small v-if="contact.messages.length > 0">{{ contact.messages[contact.messages.length -1].message}}</small>
             </div>
           </div>
           <!-- /single contact in thumbs -->
@@ -111,7 +111,7 @@
               <h3>
                 <span id="header-right-contact-name"> {{ contact.name }}</span>
                 <br />
-                <small class="time">ultimo accesso alle {{ dateFormatting(contact.messages[contact.messages.length -1].date)}}</small>
+                <small class="time">ultimo accesso alle {{ contact.randomTime }}</small>
               </h3>
             </div>
             <div class="header-right-icons">

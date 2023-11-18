@@ -9,12 +9,14 @@ createApp({
       searchText: "",
       leftVisible: true,
       activeIndex: 0,
+      
       contacts: [
         {
           name: "Michele",
           avatar: "_1",
           visible: true,
           leftVisible: true,
+          randomTime: this.generateRandomTime(),
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -38,6 +40,7 @@ createApp({
           avatar: "_2",
           visible: false,
           leftVisible: true,
+          randomTime: this.generateRandomTime(),
           messages: [
             {
               date: "20/03/2020 16:30:00",
@@ -61,6 +64,7 @@ createApp({
           avatar: "_3",
           visible: false,
           leftVisible: true,
+          randomTime: this.generateRandomTime(),
           messages: [
             {
               date: "28/03/2020 10:10:40",
@@ -84,6 +88,7 @@ createApp({
           avatar: "_4",
           visible: false,
           leftVisible: true,
+          randomTime: this.generateRandomTime(),
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -102,6 +107,7 @@ createApp({
           avatar: "_5",
           visible: false,
           leftVisible: true,
+          randomTime: this.generateRandomTime(),
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -117,6 +123,7 @@ createApp({
         },
         {
           name: "Claudia",
+          randomTime: this.generateRandomTime(),
           avatar: "_6",
           visible: false,
           leftVisible: true,
@@ -140,6 +147,7 @@ createApp({
         },
         {
           name: "Federico",
+          randomTime: this.generateRandomTime(),
           avatar: "_7",
           visible: false,
           leftVisible: true,
@@ -158,6 +166,7 @@ createApp({
         },
         {
           name: "Davide",
+          randomTime: this.generateRandomTime(),
           avatar: "_8",
           visible: false,
           leftVisible: true,
@@ -231,7 +240,6 @@ createApp({
 
     dateFormatting(date) {
       let luxonDate;
-
       if (luxon.DateTime.fromFormat(date, "HH:mm").isValid) {
         luxonDate = luxon.DateTime.fromFormat(date, "HH:mm");
       } else {
@@ -239,6 +247,20 @@ createApp({
       }
 
       return luxonDate.toLocaleString({ hour: "numeric", minute: "numeric" });
+    },
+    generateRandomTime() {
+      const hours = Math.floor(Math.random() * 24);
+
+      const minutes = Math.floor(Math.random() * 60);
+
+      const formattedHours = hours < 10 ? "0" + hours : hours.toString();
+      const formattedMinutes =
+        minutes < 10 ? "0" + minutes : minutes.toString();
+
+      return `${formattedHours}:${formattedMinutes}`;
+    },
+    saveRandomTime(index) {
+      this.contacts[index].randomTime = this.generateRandomTime();
     },
   },
 }).mount("#app");
