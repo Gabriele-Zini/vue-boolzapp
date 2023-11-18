@@ -9,7 +9,7 @@ createApp({
       searchText: "",
       leftVisible: true,
       activeIndex: 0,
-      
+
       contacts: [
         {
           name: "Michele",
@@ -216,13 +216,14 @@ createApp({
       setTimeout(() => {
         const botMessage = "ok";
         const botDate = formattedTime;
-
-        contact.messages.push({
-          date: botDate,
-          message: botMessage,
-          status: "received",
-        });
-      }, 3000);
+        if (newMessage.trim() !== "") {
+          contact.messages.push({
+            date: botDate,
+            message: botMessage,
+            status: "received",
+          });
+        }
+      }, 1000);
     },
     deleteMessage(contact, index) {
       contact.messages.splice(index, 1);
