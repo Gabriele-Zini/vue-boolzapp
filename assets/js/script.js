@@ -252,8 +252,10 @@ createApp({
       contact.newMessage = "";
 
       setTimeout(() => {
-        contact.online = true;
-        contact.newOnlineStatus = false;
+        if (newMessage.trim() !== "") {
+          contact.online = true;
+          contact.newOnlineStatus = false;
+        }
       }, 1000);
 
       setTimeout(() => {
