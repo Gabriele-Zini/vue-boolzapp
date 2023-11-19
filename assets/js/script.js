@@ -303,16 +303,16 @@ createApp({
       return luxonDate.toLocaleString({ hour: "numeric", minute: "numeric" });
     },
     generateRandomTime() {
-      const hours = Math.floor(Math.random() * 24);
-
-      const minutes = Math.floor(Math.random() * 60);
-
-      const formattedHours = hours < 10 ? "0" + hours : hours.toString();
-      const formattedMinutes =
-        minutes < 10 ? "0" + minutes : minutes.toString();
-
+      const currentDate = new Date();
+      const randomHours = Math.floor(Math.random() * (currentDate.getHours() + 1 ));
+      const randomMinutes = Math.floor(Math.random() * currentDate.getMinutes());
+    
+      const formattedHours = randomHours < 10 ? "0" + randomHours : randomHours.toString();
+      const formattedMinutes = randomMinutes < 10 ? "0" + randomMinutes : randomMinutes.toString();
+    
       return `${formattedHours}:${formattedMinutes}`;
     },
+
     saveRandomTime(index) {
       this.contacts[index].randomTime = this.generateRandomTime();
     },

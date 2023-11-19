@@ -111,9 +111,9 @@
               <h3>
                 <span id="header-right-contact-name"> {{ contact.name }}</span>
                 <br />
-                <small v-if="!contact.online && !contact.newOnlineStatus" class="time">ultimo accesso alle {{ contact.randomTime }}</small>
+                <small v-if="!contact.online && !contact.newOnlineStatus" class="time">ultimo accesso oggi alle {{ contact.randomTime }}</small>
                 <small v-if="contact.online" class="time">online</small>
-                <small v-if="contact.newOnlineStatus" class="time">ultimo accesso alle {{contact.newOnlineTime }}</small>
+                <small v-if="contact.newOnlineStatus" class="time">ultimo accesso oggi alle {{contact.newOnlineTime }}</small>
               </h3>
             </div>
             <div class="header-right-icons">
