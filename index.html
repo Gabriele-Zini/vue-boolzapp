@@ -169,11 +169,10 @@
               v-model="contact.newMessage"
               @input="typingFunction"
               @blur="notTypingWithDelay"
-              @focus="typingFunction"
               @keyup.enter="sendMessage(contact); notTyping()"
             />
             <div class="right-footer-icon">
-              <i v-if="!typing" class="fa fa-microphone" aria-hidden="true"></i>
+              <i v-if="!typing || contact.newMessage === '' " class="fa fa-microphone" aria-hidden="true"></i>
               <i v-else @click="sendMessage(contact); notTyping()" class="fa fa-paper-plane" aria-hidden="true"></i>
             </div>
           </div>
