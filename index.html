@@ -76,20 +76,25 @@
             :key="index"
             @click="contactClicked(index)"
             v-show="contact.leftVisible"
-          >  
-            <div class="contact-logo"  >
+          >
+            <div class="contact-logo">
               <img
                 :src="`assets/img/avatar${contact.avatar}.jpg`"
                 alt="Avatar {{ contact.name }}"
-                
               />
             </div>
             <div class="contact-info">
               <h3>
                 <span class="contact-name">{{ contact.name }}</span>
-                <span class="time" v-if="contact.messages.length > 0">{{ dateFormatting(contact.messages[contact.messages.length -1].date)}}</span>
+                <span class="time" v-if="contact.messages.length > 0"
+                  >{{ dateFormatting(contact.messages[contact.messages.length
+                  -1].date)}}</span
+                >
               </h3>
-              <small v-if="contact.messages.length > 0">{{ contact.messages[contact.messages.length -1].message}}</small>
+              <small v-if="contact.messages.length > 0"
+                >{{ contact.messages[contact.messages.length
+                -1].message}}</small
+              >
             </div>
           </div>
           <!-- /single contact in thumbs -->
@@ -97,11 +102,13 @@
       </div>
       <!-- /left container -->
 
-
-
       <!--right container-->
       <div class="right">
-        <div v-for="(contact, index) in contacts" :key="contact.name" v-show="contact.visible">
+        <div
+          v-for="(contact, index) in contacts"
+          :key="contact.name"
+          v-show="contact.visible"
+        >
           <div class="header-right">
             <div class="header-right-logo">
               <img
@@ -111,9 +118,15 @@
               <h3>
                 <span id="header-right-contact-name"> {{ contact.name }}</span>
                 <br />
-                <small v-if="!contact.online && !contact.newOnlineStatus" class="time">ultimo accesso oggi alle {{ contact.randomTime }}</small>
+                <small
+                  v-if="!contact.online && !contact.newOnlineStatus"
+                  class="time"
+                  >ultimo accesso oggi alle {{ contact.randomTime }}</small
+                >
                 <small v-if="contact.online" class="time">online</small>
-                <small v-if="contact.newOnlineStatus" class="time">ultimo accesso oggi alle {{contact.newOnlineTime }}</small>
+                <small v-if="contact.newOnlineStatus" class="time"
+                  >ultimo accesso oggi alle {{contact.newOnlineTime }}</small
+                >
               </h3>
             </div>
             <div class="header-right-icons">
@@ -124,7 +137,11 @@
           </div>
           <div class="right-messages-container">
             <div class="right-messages">
-              <div v-for="(message, index) in contact.messages" :key="message.message" class="d-flex">
+              <div
+                v-for="(message, index) in contact.messages"
+                :key="message.message"
+                class="d-flex"
+              >
                 <div v-if="message.status === 'sent'" class="message sent">
                   <!-- sent message -->
                   <div class="message-inner">
@@ -133,14 +150,24 @@
                       <i class="fa fa-chevron-down"></i>
                       <div class="message-options-panel">
                         <div class="message-info">Info messaggio</div>
-                        <div class="message-destroy" @click="deleteMessage(contact, index)">Cancella messaggio</div>
+                        <div
+                          class="message-destroy"
+                          @click="deleteMessage(contact, index)"
+                        >
+                          Cancella messaggio
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <span class="message-time">{{ dateFormatting( message.date) }}</span>
+                  <span class="message-time"
+                    >{{ dateFormatting( message.date) }}</span
+                  >
                 </div>
-          
-                <div v-if="message.status === 'received'" class="message received">
+
+                <div
+                  v-if="message.status === 'received'"
+                  class="message received"
+                >
                   <!-- received message -->
                   <div class="message-inner">
                     <span class="message-text">{{ message.message }}</span>
@@ -148,39 +175,55 @@
                       <i class="fa fa-chevron-down"></i>
                       <div class="message-options-panel">
                         <div class="message-info">Info messaggio</div>
-                        <div class="message-destroy" @click="deleteMessage(contact, index)">Cancella messaggio</div>
+                        <div
+                          class="message-destroy"
+                          @click="deleteMessage(contact, index)"
+                        >
+                          Cancella messaggio
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <span class="message-time">{{ dateFormatting( message.date) }}</span>
+                  <span class="message-time"
+                    >{{ dateFormatting( message.date) }}</span
+                  >
                 </div>
               </div>
             </div>
-          
 
-
-          <div class="right-footer">
-            <div class="right-footer-icon">
-              <i class="far fa-smile"></i>
-            </div>
-            <input
-              class="new-message-inputs"
-              placeholder="Scrivi un messaggio"
-              v-model="contact.newMessage"
-              @input="typingFunction"
-              @blur="notTypingWithDelay"
-              @keyup.enter="sendMessage(contact); notTyping()"
-            />
-            <div class="right-footer-icon">
-              <i v-if="!typing || contact.newMessage === '' " class="fa fa-microphone" aria-hidden="true"></i>
-              <i v-else @click="sendMessage(contact); notTyping()" class="fa fa-paper-plane" aria-hidden="true"></i>
+            <div class="right-footer">
+              <div class="right-footer-icon">
+                <i class="far fa-smile"></i>
+              </div>
+              <input
+                class="new-message-inputs"
+                placeholder="Scrivi un messaggio"
+                v-model="contact.newMessage"
+                @input="typingFunction"
+                @blur="notTypingWithDelay"
+                @keyup.enter="sendMessage(contact); notTyping()"
+              />
+              <div class="right-footer-icon">
+                <i
+                  v-if="!typing || contact.newMessage === '' "
+                  class="fa fa-microphone"
+                  aria-hidden="true"
+                ></i>
+                <i
+                  v-else
+                  @click="sendMessage(contact); notTyping()"
+                  class="fa fa-paper-plane"
+                  aria-hidden="true"
+                ></i>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- /right container -->
+        <!-- /right container -->
+      </div>
     </div>
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>
