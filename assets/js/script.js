@@ -304,12 +304,18 @@ createApp({
     },
     generateRandomTime() {
       const currentDate = new Date();
-      const randomHours = Math.floor(Math.random() * (currentDate.getHours() + 1 ));
-      const randomMinutes = Math.floor(Math.random() * currentDate.getMinutes());
-    
-      const formattedHours = randomHours < 10 ? "0" + randomHours : randomHours.toString();
-      const formattedMinutes = randomMinutes < 10 ? "0" + randomMinutes : randomMinutes.toString();
-    
+      const randomHours = Math.floor(
+        Math.random() * (currentDate.getHours() + 1)
+      );
+      const randomMinutes = Math.floor(
+        Math.random() * currentDate.getMinutes()
+      );
+
+      const formattedHours =
+        randomHours < 10 ? "0" + randomHours : randomHours.toString();
+      const formattedMinutes =
+        randomMinutes < 10 ? "0" + randomMinutes : randomMinutes.toString();
+
       return `${formattedHours}:${formattedMinutes}`;
     },
 
@@ -335,6 +341,14 @@ createApp({
 
     getCurrentTimeLuxon() {
       return luxon.DateTime.now().toFormat("HH:mm");
+    },
+    troncateMessage(message) {
+      if (message && message.length > 20) {
+        const shortMessage = message.substring(0, 20) + "...";
+        return shortMessage;
+      } else {
+        return message;
+      }
     },
   },
 }).mount("#app");
