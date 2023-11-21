@@ -92,8 +92,8 @@
                 >
               </h3>
               <small v-if="contact.messages.length > 0"
-                >{{ contact.messages[contact.messages.length
-                -1].message}}</small
+                >{{ troncateMessage(contact.messages[contact.messages.length
+                -1].message) }}</small
               >
             </div>
           </div>
